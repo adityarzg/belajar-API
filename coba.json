@@ -1,0 +1,26 @@
+[
+    {
+        "nama" : "Rizki",
+        "umur" : 17,
+        "jk" : "Laki-laki",
+        "hobi" : ["Berenang", "Main Game", "Nonton"],
+        "alamat" : "Jl. Raya",
+        "keluarga" : {
+            "ayah" : "Joko",
+            "ibu" : "Yanti",
+            "saudara" : ["Rizka", "Rizku", "Rizal"]
+        }
+    },
+    {
+        "nama" : "ALdo",
+        "umur" : 18,
+        "jk" : "Laki-laki",
+        "hobi" : ["Berenang", "Main Game", "Tenis"],
+        "alamat" : "Jl. Kediri",
+        "keluarga" : {
+            "ayah" : "Anto",
+            "ibu" : "Liya",
+            "saudara" : ["Rohim", "Lisa", "Rizal"]
+        }
+    }
+]

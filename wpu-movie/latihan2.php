@@ -1,3 +1,22 @@
+<?php
+function get_CURL($url)
+{
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($curl);
+    curl_close($curl);
+
+    return json_decode($result, true);
+}
+
+$result = get_CURL('https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UC2xqWf6Iv6iMKxeqKVqdOHw&key=AIzaSyCyf2Xvk5IcqYk1Qaj_1ireKiOO_5B0iBs');
+
+$youtubeProfilePic = $result['items'][0]['snippet']['thumbnails']['default']['url'];
+$youtubeSubscriber = $result['items'][0]['statistics']['subscriberCount'];
+$youtubeTitle = $result['items'][0]['snippet']['title'];
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -16,14 +35,14 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">WPU Movie!
+            <a class="navbar-brand" href="#"><img src="<?= $youtubeProfilePic; ?>" width="50" class="rounded-circle me-3"> <?= $youtubeTitle ?>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Search Movie</a>
+                    <a class="nav-link active" aria-current="page" href="#">Search Movies</a>
                 </div>
             </div>
         </div>
@@ -40,10 +59,17 @@
             </div>
         </div>
 
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <span class="ms-3">Jumlah Subscriber YT</span><span> : </span><span class="fw-bold"> <?= $youtubeSubscriber ?></span>
+                <span class="ms-3">Jumlah Followers IG</span><span> : </span><span class="fw-bold"> -</span>
+            </div>
+        </div>
+
         <hr>
 
         <div class="row" id="movie-list">
-            
+
         </div>
     </div>
 
@@ -71,7 +97,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

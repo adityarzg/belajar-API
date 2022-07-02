@@ -12,8 +12,8 @@
 //     ]
 // ];
 
-$dbh = new PDO('mysql:host=localhost;dbname=belajar', 'root', '');
-$db = $dbh->prepare('SELECT * FROM user');
+$dbh = new PDO('mysql:host=localhost;dbname=mahasiswa', 'root', '');
+$db = $dbh->prepare('SELECT * FROM mahasiswa');
 $db->execute();
 $user = $db->fetchAll(PDO::FETCH_ASSOC);
 
